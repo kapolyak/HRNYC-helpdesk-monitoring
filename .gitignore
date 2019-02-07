@@ -4,4 +4,4 @@ npm-debug.log
 node_modules/
 
 # Compiled Dirs
-client/dist/
+dist/

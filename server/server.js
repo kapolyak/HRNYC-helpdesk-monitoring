@@ -4,10 +4,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const db = require('./../db/index.js');
 
-//===================================================
-// Dummy server to test deployed database connection
-//===================================================
-
 const app = express();
 const port = process.env.PORT || 3000;
 
