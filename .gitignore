@@ -1,0 +1,7 @@
+## NPM ##
+npm
+npm-debug.log
+node_modules/
+
+# Compiled Dirs
+client/dist/
