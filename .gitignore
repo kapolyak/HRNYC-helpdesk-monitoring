@@ -2,3 +2,4 @@
 node_modules/
 
 # Compiled Dirs
+client/dist/bundle.js
