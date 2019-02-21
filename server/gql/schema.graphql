@@ -1,0 +1,43 @@
+type Query {
+  hello(name: String): String!,
+  allStaff: [Staff],
+  staff(staff_slack_id: String): Staff,
+  allHelpRequests: [HelpRequests],
+  staffHelpRequests(staff_slack_id: String): [HelpRequests]
+}
+
+# type Mutation {
+
+# }
+
+type HelpRequests {
+  student_name: String,
+  student_display_name:  String,
+  student_email: String,
+  slack_id: String,
+  channel_id: String,
+  request_content: String,
+  id: String,
+  req_status: String,
+  opened_ts: Int,
+  claimed_ts: Int, 
+  staff_msg_id: Float,
+  student_channel_id: String,
+  student_msg_id: Float,
+  time_to_answer: String,
+  staff_name: String,
+  staff_email: String,
+  staff_handle: String,
+  staff_slack_id: String, 
+  GMT_Opened: String,
+  GMT_Time: String,
+  Local_Time: String
+}
+
+type Staff {
+  staff_name: String!
+  staff_email: String!
+  staff_slack_id: String!
+  helpdesks: [HelpRequests],
+  helpdeskCount: Int
+}

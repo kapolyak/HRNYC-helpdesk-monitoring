@@ -28,4 +28,13 @@ CREATE TABLE helpdesk (
 
 CREATE INDEX helpdesk_staff_name_index ON helpdesk (staff_name);
 
+DROP TABLE IF EXISTS staff;
+
+CREATE TABLE staff (
+  staff_name text,
+  staff_email text,
+  staff_slack_id text
+);
+
+
 /* COPY helpdesk FROM '/Users/trentgoing/Code/hrnycapp/db/seeds/HelpDesk_Log.csv' WITH (FORMAT csv, HEADER true); */
