@@ -1,8 +1,8 @@
 
-DROP TABLE IF EXISTS help_desk;
-DROP INDEX IF EXISTS  help_desk_staff_name_index;
+DROP TABLE IF EXISTS helpdesk;
+DROP INDEX IF EXISTS  helpdesk_staff_name_index;
 
-CREATE TABLE help_desk (
+CREATE TABLE helpdesk (
   student_name text,
   student_display_name  text,
   student_email text,
@@ -26,6 +26,6 @@ CREATE TABLE help_desk (
   Local_Time time
 );
 
-CREATE INDEX help_desk_staff_name_index ON help_desk (staff_name);
+CREATE INDEX helpdesk_staff_name_index ON helpdesk (staff_name);
 
-/* COPY help_desk FROM '/Users/trentgoing/Code/hrnycapp/db/seeds/Help_Desk_Log.csv' WITH (FORMAT csv, HEADER true); */
+/* COPY helpdesk FROM '/Users/trentgoing/Code/hrnycapp/db/seeds/HelpDesk_Log.csv' WITH (FORMAT csv, HEADER true); */
