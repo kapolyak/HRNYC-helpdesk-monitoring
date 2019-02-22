@@ -3,3 +3,6 @@ node_modules/
 
 # Compiled Dirs
 client/dist/bundle.js
+
+# seed files
+db/seeds/*
