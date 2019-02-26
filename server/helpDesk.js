@@ -6,7 +6,7 @@ const query = {
 }
 
 const getCounts = (req, res) =>  {
-  console.log(query);
+  console.log(db.query);
   db.query(query)
     .then(result => {
       console.log(result.rows[0]);
