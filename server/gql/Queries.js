@@ -103,7 +103,6 @@ function helpdeskAvgClaimTime({staff_slack_id}, args, context, info) {
     values: [staff_slack_id],
   }) 
     .then(result => {
-      console.log('MY LOG:', typeof Number(result.rows[0].avg_claim_time))
       return Number(result.rows[0].avg_claim_time);
     })
     .catch(err => {
