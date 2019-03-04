@@ -39,5 +39,6 @@ type Staff {
   staff_email: String!
   staff_slack_id: String!
   helpdesks: [HelpRequests],
-  helpdeskCount: Int
+  helpdeskCount: Int,
+  helpdeskAvgClaimTime: String
 }

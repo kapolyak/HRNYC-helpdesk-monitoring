@@ -82,6 +82,37 @@ function helpdeskCount({staff_slack_id}, args, context, info) {
     });
 }
 
+function helpdeskAvgClaimTime({staff_slack_id}, args, context, info) {
+  console.log(staff_slack_id);
+  return context.db.query({
+    text: `
+      SELECT 
+        helpdesk.staff_name, 
+        ROUND
+        (
+          AVG
+            (
+              helpdesk.claimed_ts - helpdesk.opened_ts
+            )
+        , 2) 
+        AS avg_claim_time
+      FROM helpdesk
+      WHERE helpdesk.staff_slack_id = $1
+      GROUP BY helpdesk.staff_name
+      `,
+    values: [staff_slack_id],
+  }) 
+    .then(result => {
+      console.log('MY LOG:', typeof Number(result.rows[0].avg_claim_time))
+      return Number(result.rows[0].avg_claim_time);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+
+
 module.exports = {
   Query: {
     hello,
@@ -92,6 +123,7 @@ module.exports = {
   },
   Staff: {
     helpdesks,
-    helpdeskCount
+    helpdeskCount,
+    helpdeskAvgClaimTime
   }
 }
