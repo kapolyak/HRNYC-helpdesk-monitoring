@@ -2,13 +2,13 @@
   "name": "hrnycapp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/gqlserver.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "server-dev": "nodemon server/server.js",
     "gql-server": "nodemon server/gqlserver.js",
     "build-dev": "webpack --config webpack.config.js --mode development --watch",
-    "build-prod": "webpack --config webpack.config.js --mode production"
+    "build-prod": "webpack --config webpack.config.js --mode production",
+    "start": "node server/gqlserver.js"
   },
   "repository": {
     "type": "git",

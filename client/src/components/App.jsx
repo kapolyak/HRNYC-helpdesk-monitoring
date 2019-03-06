@@ -27,7 +27,8 @@ class App extends React.Component {
       `AkhMm, great great`,
       `Sieze the means of production!`,
       `Is this a bit?`,
-      `AkhMm, sorry, choking on my meatstick`
+      `Not a Bolshevik trojan horse`
+      // `AkhMm, sorry, choking on my meatstick`
     ];
 
     return (
