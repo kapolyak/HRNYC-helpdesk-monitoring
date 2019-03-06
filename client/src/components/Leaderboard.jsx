@@ -13,13 +13,10 @@ const makeDefaultState = () => ({
 class Leaderboard extends React.Component {
   constructor(props) {
     super(props);
-    this.sort = this.sort.bind(this);
     this.state = {
       data: this.props.allStaff
     };
   }
-
-
 
   render() {
     let data = this.props.allStaff;
@@ -32,13 +29,13 @@ class Leaderboard extends React.Component {
       Header: 'Count',
       accessor: 'helpdeskCount',
     }, {
-      Header: 'Avg Claim Time', 
+      Header: 'Avg Claim Time (sec)', 
       accessor: 'helpdeskAvgClaimTime',
     }]
 
     return (
       <div>
-        <h1>LEADERBOARD</h1>
+        <h1>HRNYC Helpdesk Leaderboard</h1>
         <ReactTable
           data={data}
           columns={columns}

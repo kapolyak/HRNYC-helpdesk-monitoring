@@ -32,11 +32,10 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>HR Help Desk App</h1>
         <div className="main">
           <Query query={getAllStaff}>
             {({ loading, error, data }) => {
-              if (loading) return <h2>{loader[Math.floor(Math.random()* 4)]}</h2>;
+              if (loading) return <div className="loader">{loader[Math.floor(Math.random()* 4)]}</div>;
               if (error) return <p>Error :(</p>;
               return (
               <Leaderboard allStaff={data.allStaff}/>
