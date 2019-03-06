@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server-dev": "nodemon server/server.js",
-    "gql-server": "nodemon --inspect server/gqlserver.js",
+    "gql-server": "nodemon server/gqlserver.js",
     "build-dev": "webpack --config webpack.config.js --mode development --watch",
     "build-prod": "webpack --config webpack.config.js --mode production"
   },
@@ -36,6 +36,7 @@
     "react": "^16.8.3",
     "react-apollo": "^2.5.1",
     "react-dom": "^16.8.3",
+    "react-table": "^6.9.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   }

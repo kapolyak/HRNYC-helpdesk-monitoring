@@ -1,6 +1,7 @@
-let React = require('react');
-let gql = require('graphql-tag');
-let { Query } = require("react-apollo");
+const React = require('react');
+const gql = require('graphql-tag');
+const { Query } = require("react-apollo");
+const { Leaderboard } = require('./Leaderboard.jsx');
 
 const getAllStaff = gql`
 {
@@ -8,21 +9,15 @@ const getAllStaff = gql`
     staff_name
     staff_slack_id
     helpdeskCount
+    helpdeskAvgClaimTime
   }
 }
 `;
 
 class App extends React.Component {
 
-  sort(staff) {
-    staff.sort((a, b) => {
-      if (a.helpdeskCount > b.helpdeskCount) {
-        return -1;
-      } else {
-        return 1;
-      }
-    });
-    return staff;
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -31,24 +26,24 @@ class App extends React.Component {
       `What is it, Monday?`,
       `AkhMm, great great`,
       `Sieze the means of production!`,
-      `Is this a bit?`
+      `Is this a bit?`,
+      `AkhMm, sorry, choking on my meatstick`
     ];
 
     return (
       <div>
-        <h1>LEADERBOARD</h1>
-        <Query query={getAllStaff}>
-          {({ loading, error, data }) => {
-            if (loading) return <h2>{loader[Math.floor(Math.random()* 4)]}</h2>;
-            if (error) return <p>Error :(</p>;
-            let sorted = this.sort(data.allStaff)
-            return sorted.map((staff) => (
-              <div key={staff.staff_slack_id}>
-                <p>{staff.staff_name + ': '} <b>{staff.helpdeskCount}</b></p>
-              </div>
-            ));
-          }}
-        </Query>
+        <h1>HR Help Desk App</h1>
+        <div className="main">
+          <Query query={getAllStaff}>
+            {({ loading, error, data }) => {
+              if (loading) return <h2>{loader[Math.floor(Math.random()* 4)]}</h2>;
+              if (error) return <p>Error :(</p>;
+              return (
+              <Leaderboard allStaff={data.allStaff}/>
+              )
+            }}
+          </Query>
+        </div>
       </div>
     )
   }

@@ -20,6 +20,10 @@ db.connect((err) => {
   }
 })
 
+app.get('/test', (req, res) => {
+  res.send('test');
+})
+
 app.get('/counts', helpDeskController.getCounts);
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
