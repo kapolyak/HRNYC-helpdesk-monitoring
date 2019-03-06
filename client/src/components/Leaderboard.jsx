@@ -19,22 +19,11 @@ class Leaderboard extends React.Component {
     };
   }
 
-  sort(staff) {
-    staff.sort((a, b) => {
-      if (a.helpdeskCount > b.helpdeskCount) {
-        return -1;
-      } else {
-        return 1;
-      }
-    });
-    return staff;
-  }
+
 
   render() {
-    let sorted = this.sort(this.props.allStaff)
     let data = this.props.allStaff;
     console.log('data', data)
-    // console.log(sorted);
 
     const columns = [{
       Header: 'Name',
@@ -49,6 +38,7 @@ class Leaderboard extends React.Component {
 
     return (
       <div>
+        <h1>LEADERBOARD</h1>
         <ReactTable
           data={data}
           columns={columns}
@@ -58,13 +48,6 @@ class Leaderboard extends React.Component {
           loading={false}
           colum={{show:true}}
         />
-        <h1>LEADERBOARD</h1>
-            {sorted.map((staff) => (
-              <div key={staff.staff_slack_id}>
-                <p>{staff.staff_name + ': '} <b>{staff.helpdeskCount}, {staff.helpdeskAvgClaimTime}</b></p>
-              </div>
-            ))
-            }
       </div>
     )
   }
