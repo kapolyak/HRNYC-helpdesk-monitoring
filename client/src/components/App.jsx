@@ -2,6 +2,7 @@ const React = require('react');
 const gql = require('graphql-tag');
 const { Query } = require("react-apollo");
 const { Leaderboard } = require('./Leaderboard.jsx');
+const { Frequency } = require('./Frequency.jsx');
 
 const getAllStaff = gql`
 {
@@ -13,6 +14,17 @@ const getAllStaff = gql`
   }
 }
 `;
+
+// const getHelpdeskCount = gql`
+// {
+//   allStaff {
+//     staff_name
+//     staff_slack_id
+//     helpdeskCount
+//     helpdeskAvgClaimTime
+//   }
+// }
+// `;
 
 class App extends React.Component {
 
@@ -39,10 +51,15 @@ class App extends React.Component {
               if (loading) return <div className="loader">{loader[Math.floor(Math.random()* 4)]}</div>;
               if (error) return <p>Error :(</p>;
               return (
-              <Leaderboard allStaff={data.allStaff}/>
+              <React.Fragment>
+                <Leaderboard allStaff={data.allStaff}/>
+              </React.Fragment>
               )
             }}
           </Query>
+          {/* <Query query={getHelpdeskCount}>
+            <Frequency />
+          </Query> */}
         </div>
       </div>
     )

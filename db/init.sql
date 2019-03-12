@@ -1,7 +1,3 @@
-
-DROP TABLE IF EXISTS helpdesk;
-DROP INDEX IF EXISTS  helpdesk_staff_name_index;
-
 CREATE TABLE helpdesk (
   student_name text,
   student_display_name  text,
@@ -22,7 +18,7 @@ CREATE TABLE helpdesk (
   staff_handle text,
   staff_slack_id text,
   GMT_Opened date,
-  GMT_Time time,
+  GMT_Time time,  
   Local_Time time
 );
 
@@ -36,5 +32,20 @@ CREATE TABLE staff (
   staff_slack_id text
 );
 
+DROP TABLE IF EXISTS student;
 
-/* COPY helpdesk FROM '/Users/trentgoing/Code/hrnycapp/db/seeds/HelpDesk_Log.csv' WITH (FORMAT csv, HEADER true); */
+CREATE TABLE student (
+  student_name text,
+  cohort_number text,
+  student_slack_id text
+);
+
+DROP TABLE IF EXISTS helpdesk;
+
+CREATE TABLE cohort (
+  cohort_number text,
+  begin_date text,
+  end_date text
+);
+
+-- COPY helpdesk FROM '/Users/kennethpolyak/code/hackreactor/Hrnycapp/db/seeds/HelpDesk_Log.csv' WITH (FORMAT csv, HEADER true);
