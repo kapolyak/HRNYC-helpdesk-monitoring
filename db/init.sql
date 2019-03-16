@@ -40,12 +40,14 @@ CREATE TABLE student (
   student_slack_id text
 );
 
-DROP TABLE IF EXISTS helpdesk;
+DROP TABLE IF EXISTS cohort;
 
 CREATE TABLE cohort (
   cohort_number text,
   begin_date text,
-  end_date text
+  end_date text,
+  begin_unix_time bigint,
+  end_unix_time bigint
 );
 
 -- COPY helpdesk FROM '/Users/kennethpolyak/code/hackreactor/Hrnycapp/db/seeds/HelpDesk_Log.csv' WITH (FORMAT csv, HEADER true);

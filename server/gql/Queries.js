@@ -27,13 +27,34 @@ function staff (parent, args, context, info) {
 } 
 
 function allHelpRequests (parent, args, context, info) {
-  return context.db.query('SELECT * FROM helpdesk')
-    .then(result => {
-      return result.rows; 
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  // let sql = args.cohort_number ? 'SELECT * FROM helpdesk' : 'SELECT * FROM helpdesk'
+
+  if (args.cohort_number) {
+    console.log('cohort number', args.cohort_number);
+
+    return context.db.query(
+
+      'SELECT * FROM helpdesk'
+      
+      )
+      .then(result => {
+        return result.rows; 
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+  } else {
+    console.log('no args')
+    return context.db.query('SELECT * FROM helpdesk')
+      .then(result => {
+        return result.rows; 
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
 }
 
 function staffHelpRequests (parent, args, context, info) {

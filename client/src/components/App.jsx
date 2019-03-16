@@ -39,8 +39,8 @@ class App extends React.Component {
       `AkhMm, great great`,
       `Sieze the means of production!`,
       `Is this a bit?`,
-      `Not a Bolshevik trojan horse`
-      // `AkhMm, sorry, choking on my meatstick`
+      `Not a Bolshevik trojan horse`,
+      `Can't buy a TV in the rain`
     ];
 
     return (
@@ -48,7 +48,7 @@ class App extends React.Component {
         <div className="main">
           <Query query={getAllStaff}>
             {({ loading, error, data }) => {
-              if (loading) return <div className="loader">{loader[Math.floor(Math.random()* 4)]}</div>;
+              if (loading) return <div className="loader">{loader[Math.floor(Math.random() * loader.length}</div>;
               if (error) return <p>Error :(</p>;
               return (
               <React.Fragment>
