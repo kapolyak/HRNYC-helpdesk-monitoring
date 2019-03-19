@@ -33,16 +33,32 @@ function allHelpRequests (parent, args, context, info) {
     console.log('cohort number', args.cohort_number);
 
     return context.db.query(
-
-      'SELECT * FROM helpdesk'
-      
-      )
-      .then(result => {
-        return result.rows; 
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      `
+      SELECT * FROM cohort
+      WHERE cohort.cohort_number = '${args.cohort_number}'
+      `
+    ).then(cohortData => {
+      console.log('COHORT DATA', cohortData);
+      return context.db.query(
+        `
+        SELECT helpdesk.student_name, student.cohort_number, helpdesk.opened_ts from helpdesk 
+        INNER JOIN student 
+        ON student.student_slack_id = helpdesk.slack_id
+        WHERE student.cohort_number = '${args.cohort_number}'
+        `
+        )
+        .then(result => {
+  
+          console.log('COHORT SEARCH', result); 
+          return result
+        })
+        .then(result => {
+          return result.rows; 
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    })
 
   } else {
     console.log('no args')
