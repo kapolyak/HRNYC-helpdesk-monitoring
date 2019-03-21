@@ -7,22 +7,22 @@ const { Frequency } = require('./Frequency.jsx');
 const cohort_number = 19;
 
 const getAllStaff = gql`
-{
-  allStaff {
-    staff_name
-    staff_slack_id
-    helpdeskCount
-    helpdeskAvgClaimTime
+  {
+    allStaff {
+      staff_name
+      staff_slack_id
+      helpdeskCount
+      helpdeskAvgClaimTime
+    }
   }
-}
 `;
 
 const getHelpdeskCount = gql`
-{
-  allHelpRequests(cohort_number:"${cohort_number}") {
-    opened_ts 
- }
-}
+  {
+    allHelpRequests(cohort_number:"${cohort_number}") {
+      opened_ts 
+  }
+  }
 `;
 
 class App extends React.Component {

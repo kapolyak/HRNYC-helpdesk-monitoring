@@ -50,24 +50,42 @@ function allHelpRequests (parent, args, context, info) {
           console.log('COHORT DATA', cohortData);
           console.log('COHORT SEARCH', result); 
 
-          const UNIX_BEGIN = cohortData.rows[0].begin_unix_time;
-          const UNIX_END = cohortData.rows[0].end_unix_time;
-          const diff = Number(UNIX_END) - Number(UNIX_BEGIN);
+          const UNIX_BEGIN = Number(cohortData.rows[0].begin_unix_time);
+          const UNIX_END = Number(cohortData.rows[0].end_unix_time);
+          // const diff = Number(UNIX_END) - Number(UNIX_BEGIN);
 
-          console.log('diff', diff);
-          console.log('diff in 13s', Math.floor(diff/13));
+          const intervals = [
+            [UNIX_BEGIN],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+          ]
 
-          let sortedDataObject = {};
+          // fill intervals
+          intervals.forEach((interval, i) => {
+            interval[1] = interval[0] + 604800;
 
-          // result.forEach((helpdesk) => {
-            
-          // })
+            if (intervals[i + 1] !== undefined) {
+              intervals[i + 1][0] = interval[1];
+            }
+          })
+
+          console.log('INTERVALS', intervals);
+          console.log('ENDTIME', UNIX_END);
+
           let count = 0;
           let temp = result.rows.map((helpdesk) => {
             return [helpdesk.opened_ts]
           })
-
-          console.log('TEMP', temp);
 
           let data = {'name': 'HRNYC18', 'data': []};
           return result.rows; 
