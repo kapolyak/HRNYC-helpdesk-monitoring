@@ -69,10 +69,10 @@ class App extends React.Component {
               if (error) {
                 return <p>Error :(</p>;
               }
-              console.log('DATA FROM HD COUNT', data);
+              console.log('DATA FROM HD COUNT RESOLVER', data);
               return (
                 <React.Fragment>
-                  <Frequency data={data.data}/>
+                  <Frequency data={data}/>
                 </React.Fragment>
               )
             }}

@@ -15,22 +15,25 @@ class Frequency extends React.Component {
 
   render() {
 
-    console.log(this.state.data)
+    console.log('DATA ON COMPONENT', this.state.data)
 
     var sampleData = [{"name": "A", "data": [["01", 3], ["02", 4], ["03", 10], ["04", 12], ["05", 8], ["06", 7], ["07", 3], ["08", 4], ["09", 5], ["10", 3], ["11", 4], ["12", 5], ["13", 5]]}, {"name": "B", "data": [["01", 8], ["02", 1], ["03", 2]]}];
-		console.log('sample data: ', sampleData);
+    console.log('sample data: ', sampleData);
+    
+    let chartData = [{"name": "HRNYC19", "data": this.state.data}];
+    console.log('CHART DATA', chartData)
 
     return (
       <div>
         <h1>HRNYC Helpdesk Frequency</h1>
         <LineChart data={sampleData}/>
-				{/* <LineChart 
+				<LineChart 
 					xtitle="Hour" 
 					ytitle="# of Trains" 
-					data={data}
+					data={chartData}
 					width='80%'
 					height='600px'
-				/> */}
+				/>
       </div>
     )
   }

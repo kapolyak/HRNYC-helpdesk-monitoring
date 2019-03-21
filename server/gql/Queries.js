@@ -47,12 +47,26 @@ function allHelpRequests (parent, args, context, info) {
         `
         )
         .then(result => {
-          console.log('COHORT DATA', cohortData);
-          console.log('COHORT SEARCH', result); 
+          console.log('COHORT DATA', cohortData); 
 
           const UNIX_BEGIN = Number(cohortData.rows[0].begin_unix_time);
           const UNIX_END = Number(cohortData.rows[0].end_unix_time);
-          // const diff = Number(UNIX_END) - Number(UNIX_BEGIN);
+
+          const hash = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            6: 0,
+            7: 0,
+            8: 0,
+            9: 0,
+            10: 0,
+            11: 0,
+            12: 0,
+            13: 0
+          }
 
           const intervals = [
             [UNIX_BEGIN],
@@ -79,16 +93,22 @@ function allHelpRequests (parent, args, context, info) {
             }
           })
 
-          console.log('INTERVALS', intervals);
-          console.log('ENDTIME', UNIX_END);
-
-          let count = 0;
-          let temp = result.rows.map((helpdesk) => {
-            return [helpdesk.opened_ts]
+          let tickets = result.rows;
+          
+          tickets.forEach(ticket => {
+            intervals.forEach((interval, i) => {
+              if (ticket.opened_ts > interval[0] && ticket.opened_ts < interval[1]) {
+                hash[i + 1] += 1;
+              } 
+            })
           })
+          let results = [];
 
-          let data = {'name': 'HRNYC18', 'data': []};
-          return result.rows; 
+          for (let key in hash) {
+            results.push([key, hash[key]]);
+          }
+          console.log('HASH ARRAY', results);
+          return results; 
         })
         .catch(err => {
           console.log(err);
