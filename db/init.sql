@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS helpdesk;
+
 CREATE TABLE helpdesk (
   student_name text,
   student_display_name  text,

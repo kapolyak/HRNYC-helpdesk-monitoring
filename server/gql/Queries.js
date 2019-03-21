@@ -38,7 +38,6 @@ function allHelpRequests (parent, args, context, info) {
       WHERE cohort.cohort_number = '${args.cohort_number}'
       `
     ).then(cohortData => {
-      console.log('COHORT DATA', cohortData);
       return context.db.query(
         `
         SELECT helpdesk.student_name, student.cohort_number, helpdesk.opened_ts from helpdesk 
@@ -48,11 +47,29 @@ function allHelpRequests (parent, args, context, info) {
         `
         )
         .then(result => {
-  
+          console.log('COHORT DATA', cohortData);
           console.log('COHORT SEARCH', result); 
-          return result
-        })
-        .then(result => {
+
+          const UNIX_BEGIN = cohortData.rows[0].begin_unix_time;
+          const UNIX_END = cohortData.rows[0].end_unix_time;
+          const diff = Number(UNIX_END) - Number(UNIX_BEGIN);
+
+          console.log('diff', diff);
+          console.log('diff in 13s', Math.floor(diff/13));
+
+          let sortedDataObject = {};
+
+          // result.forEach((helpdesk) => {
+            
+          // })
+          let count = 0;
+          let temp = result.rows.map((helpdesk) => {
+            return [helpdesk.opened_ts]
+          })
+
+          console.log('TEMP', temp);
+
+          let data = {'name': 'HRNYC18', 'data': []};
           return result.rows; 
         })
         .catch(err => {

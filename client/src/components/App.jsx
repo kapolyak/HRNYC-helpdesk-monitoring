@@ -4,6 +4,8 @@ const { Query } = require("react-apollo");
 const { Leaderboard } = require('./Leaderboard.jsx');
 const { Frequency } = require('./Frequency.jsx');
 
+const cohort_number = 19;
+
 const getAllStaff = gql`
 {
   allStaff {
@@ -15,16 +17,13 @@ const getAllStaff = gql`
 }
 `;
 
-// const getHelpdeskCount = gql`
-// {
-//   allStaff {
-//     staff_name
-//     staff_slack_id
-//     helpdeskCount
-//     helpdeskAvgClaimTime
-//   }
-// }
-// `;
+const getHelpdeskCount = gql`
+{
+  allHelpRequests(cohort_number:"${cohort_number}") {
+    opened_ts 
+ }
+}
+`;
 
 class App extends React.Component {
 
@@ -48,18 +47,36 @@ class App extends React.Component {
         <div className="main">
           <Query query={getAllStaff}>
             {({ loading, error, data }) => {
-              if (loading) return <div className="loader">{loader[Math.floor(Math.random() * loader.length}</div>;
-              if (error) return <p>Error :(</p>;
+              if (loading) {
+                return <div className="loader">{loader[Math.floor(Math.random() * 7)]}</div>;
+              }
+              if (error) {
+                return <p>Error :(</p>;
+              }
+
               return (
-              <React.Fragment>
-                <Leaderboard allStaff={data.allStaff}/>
-              </React.Fragment>
+                <React.Fragment>
+                  <Leaderboard allStaff={data.allStaff}/>
+                </React.Fragment>
               )
             }}
           </Query>
-          {/* <Query query={getHelpdeskCount}>
-            <Frequency />
-          </Query> */}
+          <Query query={getHelpdeskCount}>
+          {({ loading, error, data }) => {
+              if (loading) {
+                return <div className="loader">{loader[Math.floor(Math.random() * 7)]}</div>;
+              }
+              if (error) {
+                return <p>Error :(</p>;
+              }
+              console.log('DATA FROM HD COUNT', data);
+              return (
+                <React.Fragment>
+                  <Frequency data={data.data}/>
+                </React.Fragment>
+              )
+            }}
+          </Query>
         </div>
       </div>
     )
