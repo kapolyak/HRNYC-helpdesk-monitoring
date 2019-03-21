@@ -103,10 +103,7 @@ function countPerDay (parent, args, context, info) {
             })
           })
 
-          console.log('HASH ', hash);
-
           let resultArray = [];
-
           for (let key in hash) {
             resultArray.push({
               "date": key,

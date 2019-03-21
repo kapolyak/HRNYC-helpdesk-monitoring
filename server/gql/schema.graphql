@@ -13,7 +13,7 @@ type Query {
 
 type DayTuples {
   date: String,
-  count: String
+  count: String,
 }
 
 type HelpRequests {

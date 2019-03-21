@@ -8,23 +8,29 @@ ReactChartkick.addAdapter(Highcharts);
 class Frequency extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: this.props.data
-    };
   }
 
   render() {
+    let finalData = [];
+    console.log('FREQ RENDER PROPS', this.props.data);
 
-    var counts = this.state.data.countPerDay;
-    console.log('COUNTS', counts);
+    this.props.data.forEach((cohort) => {
+      console.log('COHORT IN FOR EACH', cohort)
 
-    let finalCount = [];
-    counts.forEach((day) => {
-      finalCount.push([day.date, day.count])
-    })  
+      let cohortData = {"name": cohort[0], "data": []};
+      let cohortArray = [];
+
+      cohort[1].countPerDay.forEach((week) => {
+        cohortArray.push([week.date, week.count]);
+      })
+      cohortData.data = cohortArray;
+      finalData.push(cohortData);
+    })
+
+    console.log('FINAL DATA', finalData);
     
-    let chartData = [{"name": "HRNYC19", "data": finalCount}];
-    console.log('CHART DATA', chartData);
+    // let chartData = [{"name": "HRNYC19", "data": finalCount}];
+    // console.log('CHART DATA', chartData);
 
     return (
       <div>
@@ -33,8 +39,8 @@ class Frequency extends React.Component {
 				<LineChart 
 					xtitle="Week #" 
 					ytitle="# of Helpdesk Requests" 
-					data={chartData}
-					width='80%'
+					data={finalData}
+					width='100%'
 					height='600px'
 				/>
       </div>
