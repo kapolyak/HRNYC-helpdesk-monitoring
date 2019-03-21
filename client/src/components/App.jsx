@@ -19,8 +19,9 @@ const getAllStaff = gql`
 
 const getHelpdeskCount = gql`
   {
-    allHelpRequests(cohort_number:"${cohort_number}") {
-      opened_ts 
+    countPerDay(cohort_number:"${cohort_number}") {
+      date,
+      count
   }
   }
 `;

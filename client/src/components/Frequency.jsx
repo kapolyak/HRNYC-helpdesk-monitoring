@@ -15,21 +15,24 @@ class Frequency extends React.Component {
 
   render() {
 
-    console.log('DATA ON COMPONENT', this.state.data)
+    var counts = this.state.data.countPerDay;
+    console.log('COUNTS', counts);
 
-    var sampleData = [{"name": "A", "data": [["01", 3], ["02", 4], ["03", 10], ["04", 12], ["05", 8], ["06", 7], ["07", 3], ["08", 4], ["09", 5], ["10", 3], ["11", 4], ["12", 5], ["13", 5]]}, {"name": "B", "data": [["01", 8], ["02", 1], ["03", 2]]}];
-    console.log('sample data: ', sampleData);
+    let finalCount = [];
+    counts.forEach((day) => {
+      finalCount.push([day.date, day.count])
+    })  
     
-    let chartData = [{"name": "HRNYC19", "data": this.state.data}];
-    console.log('CHART DATA', chartData)
+    let chartData = [{"name": "HRNYC19", "data": finalCount}];
+    console.log('CHART DATA', chartData);
 
     return (
       <div>
         <h1>HRNYC Helpdesk Frequency</h1>
-        <LineChart data={sampleData}/>
+        {/* <LineChart data={sampleData}/> */}
 				<LineChart 
-					xtitle="Hour" 
-					ytitle="# of Trains" 
+					xtitle="Week #" 
+					ytitle="# of Helpdesk Requests" 
 					data={chartData}
 					width='80%'
 					height='600px'

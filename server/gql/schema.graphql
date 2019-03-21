@@ -4,16 +4,16 @@ type Query {
   staff(staff_slack_id: String): Staff,
   allHelpRequests(cohort_number: String): [HelpRequests],
   staffHelpRequests(staff_slack_id: String): [HelpRequests],
-  countPerDay: [Days]
+  countPerDay(cohort_number: String): [DayTuples]
 }
 
 # type Mutation {
 
 # }
 
-type Days {
+type DayTuples {
   date: String,
-  count: Int
+  count: String
 }
 
 type HelpRequests {
@@ -53,5 +53,4 @@ type Cohort {
   cohort_number: Int,
   begin_unix_time: Int,
   end_unix_time: Int
-  allDates: [Days]
 }
