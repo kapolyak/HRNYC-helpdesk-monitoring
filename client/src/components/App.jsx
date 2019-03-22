@@ -63,7 +63,7 @@ class App extends React.Component {
               )
             }}
           </Query>
-          
+          <br />
           <Query query={getHelpdeskCount} variables={{cohort_number: cohorts[0]}}>
           {({ loading, error, data }) => {
               if (loading) {

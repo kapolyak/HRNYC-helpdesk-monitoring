@@ -29,6 +29,8 @@ class Frequency extends React.Component {
       finalData.push(cohortData);
     })
 
+    finalData.pop();
+
     console.log('FINAL DATA', finalData);
     
     // let chartData = [{"name": "HRNYC19", "data": finalCount}];

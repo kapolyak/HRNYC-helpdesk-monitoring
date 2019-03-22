@@ -39,7 +39,7 @@ class Leaderboard extends React.Component {
         <ReactTable
           data={data}
           columns={columns}
-          defaultPageSize={15}
+          defaultPageSize={data.length}
           className="-striped -highlight"
           showPagination={false}
           loading={false}
