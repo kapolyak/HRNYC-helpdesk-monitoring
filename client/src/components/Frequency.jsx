@@ -17,7 +17,9 @@ class Frequency extends React.Component {
     this.props.data.forEach((cohort) => {
       console.log('COHORT IN FOR EACH', cohort)
 
-      let cohortData = {"name": cohort[0], "data": []};
+      let name = `HRNYC${cohort[0]}`
+
+      let cohortData = {"name": name, "data": []};
       let cohortArray = [];
 
       cohort[1].countPerDay.forEach((week) => {
@@ -30,7 +32,6 @@ class Frequency extends React.Component {
     console.log('FINAL DATA', finalData);
     
     // let chartData = [{"name": "HRNYC19", "data": finalCount}];
-    // console.log('CHART DATA', chartData);
 
     return (
       <div>

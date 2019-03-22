@@ -4,8 +4,6 @@ const { Query } = require("react-apollo");
 const { Leaderboard } = require('./Leaderboard.jsx');
 const { Frequency } = require('./Frequency.jsx');
 
-// const cohort_number = 19;
-
 const getAllStaff = gql`
   {
     allStaff {
@@ -43,7 +41,7 @@ class App extends React.Component {
       `Can't buy a TV in the rain`
     ];
 
-    let cohorts = ['18', '19'];
+    let cohorts = ['18', '19', '20'];
     var allData = [];
 
     return (
@@ -65,6 +63,7 @@ class App extends React.Component {
               )
             }}
           </Query>
+          
           <Query query={getHelpdeskCount} variables={{cohort_number: cohorts[0]}}>
           {({ loading, error, data }) => {
               if (loading) {
@@ -86,18 +85,34 @@ class App extends React.Component {
                       if (Object.keys(data).length > 0) {
                         allData.push([cohorts[1], data]);
                       }
-                      console.log('ALL DATA', allData);
 
-                      if (allData.length === cohorts.length) {
-                        return (
-                          <Frequency data={allData}/>
-                        )
-                      } else {
-                        console.log('CHECK THE RETURN');
-                        return (
-                          <div>ERROR</div>
-                        )
-                      }
+                      return (
+                        <React.Fragment>
+                          <Query query={getHelpdeskCount} variables={{cohort_number: cohorts[2]}}>
+                            {({error, data }) => {
+                              if (error) {
+                                return <p>Error :(</p>;
+                              }
+                              if (Object.keys(data).length > 0) {
+                                allData.push([cohorts[2], data]);
+                              }
+                              console.log('ALL DATA', JSON.stringify(allData));
+                              console.log('LENGTH:', allData.length);
+                              
+                              if (allData.length >= cohorts.length) {
+                                return (
+                                  <Frequency data={allData}/>
+                                )
+                              } else {
+                                console.log('CHECK THE RETURN');
+                                return (
+                                  <div>ERROR</div>
+                                )
+                              }
+                            }}
+                          </Query>
+                        </React.Fragment>
+                      )
                     }}
                   </Query>
                 </React.Fragment>
