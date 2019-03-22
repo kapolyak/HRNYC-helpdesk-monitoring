@@ -28,10 +28,8 @@ function staff (parent, args, context, info) {
 
 function countPerDay (parent, args, context, info) {
   // let sql = args.cohort_number ? 'SELECT * FROM helpdesk' : 'SELECT * FROM helpdesk'
-  console.log('COUNT PER DAY CALLED')
-  if (args.cohort_number) {
-    console.log('cohort number', args.cohort_number);
 
+  if (args.cohort_number) {
     return context.db.query(
       `
       SELECT * FROM cohort
@@ -48,10 +46,7 @@ function countPerDay (parent, args, context, info) {
         )
         .then(result => {
           console.log('COHORT DATA', cohortData); 
-
           const UNIX_BEGIN = Number(cohortData.rows[0].begin_unix_time);
-          const UNIX_END = Number(cohortData.rows[0].end_unix_time);
-
           const hash = {
             1: 0,
             2: 0,
@@ -67,7 +62,6 @@ function countPerDay (parent, args, context, info) {
             12: 0,
             13: 0
           }
-
           const intervals = [
             [UNIX_BEGIN],
             [],
@@ -84,7 +78,6 @@ function countPerDay (parent, args, context, info) {
             []
           ]
 
-          // fill intervals
           intervals.forEach((interval, i) => {
             interval[1] = interval[0] + 604800;
 
@@ -94,7 +87,6 @@ function countPerDay (parent, args, context, info) {
           })
 
           let tickets = result.rows;
-          
           tickets.forEach(ticket => {
             intervals.forEach((interval, i) => {
               if (ticket.opened_ts > interval[0] && ticket.opened_ts < interval[1]) {
@@ -111,24 +103,14 @@ function countPerDay (parent, args, context, info) {
             })
           }
 
-          console.log('RESULT ARRAY', resultArray);
-
           return resultArray
         })
         .catch(err => {
           console.log(err);
         });
     })
-
   } else {
-    console.log('no args')
-    return context.db.query('SELECT * FROM helpdesk')
-      .then(result => {
-        return result.rows; 
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    throw new Error('No cohort_number passed');
   }
 
 }
