@@ -29,7 +29,7 @@ class Frequency extends React.Component {
       finalData.push(cohortData);
     })
 
-    finalData.pop();
+    // finalData.pop();
 
     console.log('FINAL DATA', finalData);
     
