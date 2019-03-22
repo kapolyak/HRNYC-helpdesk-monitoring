@@ -6,3 +6,6 @@ client/dist/bundle.js
 
 # seed files
 db/seeds/*
+
+# configs
+config.js

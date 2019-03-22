@@ -16,7 +16,7 @@ const getAllStaff = gql`
 `;
 
 const getHelpdeskCount = gql`
-  query countPerDat($cohort_number: String) {
+  query countPerDay($cohort_number: String) {
     countPerDay(cohort_number: $cohort_number) {
       date,
       count

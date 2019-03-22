@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { VM_URL } from "./../../config.js";
 
 const App = require('./components/app.jsx').App;
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000"
+  uri: VM_URL
 });
 
 const ApolloApp = () => (
