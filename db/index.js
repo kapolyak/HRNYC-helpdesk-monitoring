@@ -1,11 +1,12 @@
 const { Client } = require('pg')
+const config = require('./../config.js')
 
 module.exports = new Client({
-  user: 'postgres',
-  password: 'docker',
-  host: '104.196.210.28',
-  database: 'hrnycapp',
-  port: 5432,
+  user: config.user,
+  password: config.password,
+  host: config.host,
+  database: config.database,
+  port: config.port,
 })
 
 
