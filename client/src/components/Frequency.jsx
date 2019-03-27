@@ -12,13 +12,9 @@ class Frequency extends React.Component {
 
   render() {
     let finalData = [];
-    console.log('FREQ RENDER PROPS', this.props.data);
-
     this.props.data.forEach((cohort) => {
-      console.log('COHORT IN FOR EACH', cohort)
 
       let name = `HRNYC${cohort[0]}`
-
       let cohortData = {"name": name, "data": []};
       let cohortArray = [];
 
@@ -31,20 +27,15 @@ class Frequency extends React.Component {
 
     // finalData.pop();
 
-    console.log('FINAL DATA', finalData);
-    
-    // let chartData = [{"name": "HRNYC19", "data": finalCount}];
-
     return (
-      <div>
+      <div className="frequency">
         <h1>HRNYC Helpdesk Frequency</h1>
-        {/* <LineChart data={sampleData}/> */}
 				<LineChart 
 					xtitle="Week #" 
 					ytitle="# of Helpdesk Requests" 
 					data={finalData}
 					width='100%'
-					height='600px'
+					height='550px'
 				/>
       </div>
     )

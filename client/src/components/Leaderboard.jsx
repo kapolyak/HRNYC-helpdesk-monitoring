@@ -24,17 +24,20 @@ class Leaderboard extends React.Component {
 
     const columns = [{
       Header: 'Name',
-      accessor: 'staff_name' // String-based value accessors!
+      accessor: 'staff_name',
+      maxWidth: 200
     }, {
       Header: 'Count',
       accessor: 'helpdeskCount',
+      maxWidth: 100
     }, {
-      Header: 'Avg Claim Time (sec)', 
+      Header: 'Avg (sec)', 
       accessor: 'helpdeskAvgClaimTime',
+      maxWidth: 100
     }]
 
     return (
-      <div>
+      <div className="leaderboard">
         <h1>HRNYC Helpdesk Leaderboard</h1>
         <ReactTable
           data={data}
@@ -43,7 +46,10 @@ class Leaderboard extends React.Component {
           className="-striped -highlight"
           showPagination={false}
           loading={false}
-          colum={{show:true}}
+          colum={{
+            show:true, 
+            minWidth: 50
+          }}
         />
       </div>
     )

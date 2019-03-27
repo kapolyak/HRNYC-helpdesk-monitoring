@@ -3,6 +3,7 @@ const gql = require('graphql-tag');
 const { Query } = require("react-apollo");
 const { Leaderboard } = require('./Leaderboard.jsx');
 const { Frequency } = require('./Frequency.jsx');
+const { Header } = require('./Header.jsx');
 
 const getAllStaff = gql`
   {
@@ -46,6 +47,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <Header />
         <div className="main">
           <Query query={getAllStaff}>
             {({ loading, error, data }) => {
@@ -57,9 +59,7 @@ class App extends React.Component {
               }
 
               return (
-                <React.Fragment>
-                  <Leaderboard allStaff={data.allStaff}/>
-                </React.Fragment>
+                <Leaderboard allStaff={data.allStaff}/>
               )
             }}
           </Query>
@@ -96,15 +96,12 @@ class App extends React.Component {
                               if (Object.keys(data).length > 0) {
                                 allData.push([cohorts[2], data]);
                               }
-                              console.log('ALL DATA', JSON.stringify(allData));
-                              console.log('LENGTH:', allData.length);
                               
                               if (allData.length >= cohorts.length) {
                                 return (
                                   <Frequency data={allData}/>
                                 )
                               } else {
-                                console.log('CHECK THE RETURN');
                                 return (
                                   <div>ERROR</div>
                                 )
