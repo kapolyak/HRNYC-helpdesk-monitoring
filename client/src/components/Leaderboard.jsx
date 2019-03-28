@@ -37,8 +37,8 @@ class Leaderboard extends React.Component {
     }]
 
     return (
-      <div className="leaderboard">
-        <h1>HRNYC Helpdesk Leaderboard</h1>
+      <React.Fragment>
+        <h2>Leaderboard</h2>
         <ReactTable
           data={data}
           columns={columns}
@@ -48,10 +48,10 @@ class Leaderboard extends React.Component {
           loading={false}
           colum={{
             show:true, 
-            minWidth: 50
+            minWidth: 60
           }}
         />
-      </div>
+      </React.Fragment>
     )
   }
 };

@@ -59,7 +59,9 @@ class App extends React.Component {
               }
 
               return (
-                <Leaderboard allStaff={data.allStaff}/>
+                <div className="leaderboard">
+                  <Leaderboard allStaff={data.allStaff}/>
+                </div>
               )
             }}
           </Query>
@@ -99,7 +101,9 @@ class App extends React.Component {
                               
                               if (allData.length >= cohorts.length) {
                                 return (
-                                  <Frequency data={allData}/>
+                                  <div className="frequency">
+                                    <Frequency data={allData}/>
+                                  </div>
                                 )
                               } else {
                                 return (

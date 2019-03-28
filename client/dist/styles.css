@@ -5,12 +5,27 @@ body {
   font-size: 12px;
   font-weight: 400;
   color: #484848;
-  }
+}
 
 .main {
   /* border: solid black 1px; */
   padding: 2px;
   margin: auto 50px;
+  display: flex;
+}
+
+.header-text {
+  color: white;
+}
+
+.header {
+  display: flex;
+  background-color: #1791D6;
+  height: 80px;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
 }
 
 .loader {
@@ -19,13 +34,12 @@ body {
 }
 
 .leaderboard {
-  padding-left: 20px;
-  max-width: 400px;
+  max-width: 500px;
   float: left;
 }
 
 .frequency {
-  padding-left: 20px;
+  margin-left: 50px;
   width: 100%;
   max-width: 1000px;
   float: left;

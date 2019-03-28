@@ -10,7 +10,7 @@ class Header extends React.Component {
     
     return (
       <div className="header">
-        <h1>Header</h1>
+        <h1 className="header-text">Hack Reactor Helpdesk Monitoring</h1>
       </div>
     )
   }

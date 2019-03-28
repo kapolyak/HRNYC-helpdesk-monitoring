@@ -28,16 +28,16 @@ class Frequency extends React.Component {
     // finalData.pop();
 
     return (
-      <div className="frequency">
-        <h1>HRNYC Helpdesk Frequency</h1>
+      <React.Fragment>
+        <h2>Frequency</h2>
 				<LineChart 
 					xtitle="Week #" 
 					ytitle="# of Helpdesk Requests" 
 					data={finalData}
 					width='100%'
-					height='550px'
+					height='500px'
 				/>
-      </div>
+      </React.Fragment>
     )
   }
 };
