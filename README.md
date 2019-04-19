@@ -3,8 +3,6 @@ This application provides a data monitoring and visualization service for insigh
 
 <img src="https://github.com/kapolyak/HRNYC-helpdesk-monitoring/blob/master/HRNYCapp-Demo.gif" width="65%" height="65%">
 
-
-
 ## Development:
 
 Installing dependencies: 
