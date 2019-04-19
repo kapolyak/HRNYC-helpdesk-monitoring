@@ -22,10 +22,13 @@ npm run gql-server
 
 Then access the application at (http://localhost:4000).
 
-## Data
+## API
+This API is designed to use GraphQL for all queries to the database. This GraphQL implementation is built with the GraphQL-yoga module on top of a Node.js/Express.js server, which helps serve static assets. 
+
+## Data Schema
 Data specific to this module is stored in a PostgreSQL database. There are four tables:
 
-- Helpdesk
-- Student
-- Staff
-- Cohort
+- Helpdesk: each record corresponds to a helpdesk request submitted by a student.
+- Student: each record stores the name and cohort number of a Hack Reactor student.
+- Staff: each record stores the name and tenure of a Hack Reactor staff member.
+- Cohort: each record stores the cohort name, start date, and end date. 
