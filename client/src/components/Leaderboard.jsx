@@ -20,12 +20,11 @@ class Leaderboard extends React.Component {
 
   render() {
     let data = this.props.allStaff;
-    console.log('data', data)
 
     const columns = [{
       Header: 'Name',
       accessor: 'staff_name',
-      maxWidth: 200
+      maxWidth: 300
     }, {
       Header: 'Count',
       accessor: 'helpdeskCount',
@@ -43,12 +42,12 @@ class Leaderboard extends React.Component {
           data={data}
           columns={columns}
           defaultPageSize={data.length}
-          className="-striped -highlight"
+          className="-highlight"
           showPagination={false}
           loading={false}
           colum={{
             show:true, 
-            minWidth: 60
+            minWidth: 70
           }}
         />
       </React.Fragment>
