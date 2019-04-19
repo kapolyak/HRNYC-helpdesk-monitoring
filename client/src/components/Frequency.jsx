@@ -25,7 +25,7 @@ class Frequency extends React.Component {
       finalData.push(cohortData);
     })
 
-    // finalData.pop();
+    finalData.pop();
 
     return (
       <React.Fragment>

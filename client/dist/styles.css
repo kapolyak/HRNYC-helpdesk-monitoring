@@ -8,7 +8,6 @@ body {
 }
 
 .main {
-  /* border: solid black 1px; */
   padding: 2px;
   margin: auto 50px;
   display: flex;
@@ -34,15 +33,16 @@ body {
 }
 
 .leaderboard {
-  max-width: 700px;
-  float: left;
+  flex-direction: column;
+  max-width: 400px;
+  width: 100%;
 }
 
 .frequency {
+  flex-direction: column;
   margin-left: 50px;
   width: 100%;
   max-width: 1000px;
-  float: left;
 }
 
 .ReactTable {

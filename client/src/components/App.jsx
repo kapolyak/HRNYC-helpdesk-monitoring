@@ -33,13 +33,7 @@ class App extends React.Component {
 
   render() {
     let loader = [
-      `We're buying servers!`,
-      `What is it, Monday?`,
-      `AkhMm, great great`,
-      `Sieze the means of production!`,
-      `Is this a bit?`,
-      `Not a Bolshevik trojan horse`,
-      `Can't buy a TV in the rain`
+      `Loading...`
     ];
 
     let cohorts = ['18', '19', '20'];

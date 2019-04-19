@@ -1,15 +1,6 @@
 const React = require('react');
 const ReactTable = require('react-table').default;
 
-// const makeDefaultState = () => ({
-//   sorted: [],
-//   page: 0,
-//   pageSize: 10,
-//   expanded: {},
-//   resized: [],
-//   filtered: []
-// });
-
 class Leaderboard extends React.Component {
   constructor(props) {
     super(props);
@@ -24,15 +15,15 @@ class Leaderboard extends React.Component {
     const columns = [{
       Header: 'Name',
       accessor: 'staff_name',
-      maxWidth: 300
+      maxWidth: 200
     }, {
       Header: 'Count',
       accessor: 'helpdeskCount',
-      maxWidth: 100
+      maxWidth: 150
     }, {
       Header: 'Avg (sec)', 
       accessor: 'helpdeskAvgClaimTime',
-      maxWidth: 100
+      maxWidth: 150
     }]
 
     return (
