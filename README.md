@@ -3,8 +3,6 @@ This application is a prototype for a data monitoring and visualization service 
 
 <img src="https://github.com/kapolyak/HRNYC-helpdesk-monitoring/blob/master/HRNYCapp-Demo.gif" width="65%" height="65%">
 
-## Production:
-
 To view a deployed prototype of this application, go to: https://bit.ly/2Dpldhp
 
 ## Development:
